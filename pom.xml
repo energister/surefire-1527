@@ -27,6 +27,7 @@
 
   <dependencies>
 
+    <!-- the below deps are included at all modules for junit4/5 support -->
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-runner</artifactId>
@@ -52,6 +53,7 @@
       <artifactId>junit-platform-runner</artifactId>
     </dependency>
 
+    <!-- some module has testng included in classpath, but not testng class -->
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
