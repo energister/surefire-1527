@@ -1,0 +1,11 @@
+#mac
+.DS_Store
+#idea
+.idea
+*.iml
+#maven
+target
+#eclipse
+.settings
+.classpath
+.project
