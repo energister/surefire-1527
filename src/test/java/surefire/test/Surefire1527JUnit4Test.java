@@ -6,6 +6,5 @@ public class Surefire1527JUnit4Test {
 
     @Test
     public void testSomeThing() {
-
     }
 }

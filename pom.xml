@@ -7,6 +7,7 @@
   <artifactId>surefire-1527</artifactId>
   <version>1-SNAPSHOT</version>
 
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -22,6 +23,7 @@
         <artifactId>testng</artifactId>
         <version>6.14.2</version>
       </dependency>
+
     </dependencies>
   </dependencyManagement>
 
@@ -54,7 +56,7 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- some module has testng included in classpath, but not testng class -->
+    <!-- some module has testng included in classpath, but no  testng test class -->
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
@@ -71,18 +73,18 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.0</version>
 
-          <!-- with this dep, both junit4 and junit5 run -->
-          <!-- with out dep, only junit4 run -->
+          <!-- with this dependency, both junit4 and junit5 run -->
+          <!-- with out dependency, only junit4 and testng run -->
 
           <!--
-            <dependencies>
+          <dependencies>
             <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>1.2.0</version>
+              <groupId>org.junit.platform</groupId>
+              <artifactId>junit-platform-surefire-provider</artifactId>
+              <version>1.2.0</version>
             </dependency>
-            </dependencies>
-          -->
+          </dependencies>
+           -->
 
         </plugin>
       </plugins>

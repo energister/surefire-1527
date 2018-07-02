@@ -1,8 +1,8 @@
 package surefire.test;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
-public class Surefire1527JUnit5Test {
+public class Surefire1527TestNGTest {
 
     @Test
     public void testSomeThing() {
