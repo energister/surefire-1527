@@ -7,59 +7,34 @@
   <artifactId>surefire-1527</artifactId>
   <version>1-SNAPSHOT</version>
 
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.junit</groupId>
-        <artifactId>junit-bom</artifactId>
-        <version>5.2.0</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-
-      <dependency>
-        <groupId>org.testng</groupId>
-        <artifactId>testng</artifactId>
-        <version>6.14.2</version>
-      </dependency>
-
-    </dependencies>
-  </dependencyManagement>
+  <properties>
+    <junit5.version>5.4.1</junit5.version>
+    <surefire.version>2.22.1</surefire.version>
+  </properties>
 
   <dependencies>
 
-    <!-- the below deps are included at all modules for junit4/5 support -->
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-runner</artifactId>
-      <scope>test</scope>
-    </dependency>
+    <!-- junit 5 support -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.vintage</groupId>
-      <artifactId>junit-vintage-engine</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-launcher</artifactId>
+      <version>${junit5.version}</version>
       <scope>test</scope>
     </dependency>
 
-    <!-- some module has testng included in classpath, but no  testng test class -->
+    <!-- junit 4 support -->
+    <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <version>${junit5.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- some module has testng included in classpath -->
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
+      <version>6.14.2</version>
       <scope>test</scope>
     </dependency>
 
@@ -71,20 +46,26 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.0</version>
+          <version>${surefire.version}</version>
 
-          <!-- with this dependency, both junit4 and junit5 run -->
-          <!-- with out dependency, only junit4 and testng run -->
-
-          <!--
           <dependencies>
+            <!-- with this dependencies, all 3 test cases run
+             (in two iterations: (JUnit 5 and JUnit 4) + (TestNG + JUnit 4)) -->
+            <!-- without dependencies, only junit4 and testng run -->
+
+            <!--
             <dependency>
-              <groupId>org.junit.platform</groupId>
-              <artifactId>junit-platform-surefire-provider</artifactId>
-              <version>1.2.0</version>
+              <groupId>org.apache.maven.surefire</groupId>
+              <artifactId>surefire-junit-platform</artifactId>
+              <version>${surefire.version}</version>
             </dependency>
+            <dependency>
+              <groupId>org.apache.maven.surefire</groupId>
+              <artifactId>surefire-testng</artifactId>
+              <version>${surefire.version}</version>
+            </dependency>
+            -->
           </dependencies>
-           -->
 
         </plugin>
       </plugins>
